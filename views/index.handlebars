@@ -1,0 +1,28 @@
+ {{!-- BURGERS TO BE DEVOURED --}}
+<ul>
+  {{#each burgers}} {{#unless this.devoured}}
+  <p>{{this.id}}. {{this.burger_name}}
+    <form method="POST" action="/burgers/update?_method=PUT"><button class="change-devour" data-id="{{this.id}}" data-newdevour="{{this.devoured}}">
+        {{#if devoured}}DEVOURED!{{else}}DEVOUR ME!{{/if}}
+      </button></span>
+  </p>
+  {{/unless}} {{/each}}
+</ul>
+
+{{!-- DEVOURED BURGERS --}}
+<ul>
+  {{#each burgers}} {{#if this.devoured}}
+  <p>{{this.id}}. {{this.burger_name}}</p>
+  {{/if}} {{/each}}
+</ul>
+
+
+<form class="create-form">
+  <div class="form-group">
+    <input type="text" name="burger_name">
+  </div>
+
+  <button type="submit">Add Burger</button>
+</form>
+<h4>
+  Enter a burger you want to eat and click the 'Add Burger' button</h4>
